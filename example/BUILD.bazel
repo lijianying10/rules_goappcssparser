@@ -1,0 +1,7 @@
+load("@rules_goappcssparser//parser:rule.bzl","goapp_css_parser")
+
+goapp_css_parser(
+    name = "example",
+    srcs = ["input.go"],
+    out = "out.html",
+)

@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library","go_binary")
+
+go_library(
+    name = "go_default_library",
+    srcs = glob(
+        ["*.go"],
+        exclude = ["*_test.go"],
+    ),
+    importpath = "git.philo.top/CloudInfra/rules_goappcssparser/parser",
+)
+
+
+go_binary(
+    name = "goappcssparser",
+    embed = ["@rules_goappcssparser//parser:go_default_library"],
+    visibility = ["//visibility:public"],
+)
