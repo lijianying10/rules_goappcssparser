@@ -64,7 +64,10 @@ func (parse *Parse) AppendCodeGragment(src string) error {
 func (parse *Parse) Generate() (string, error) {
 	divs := ""
 	for _, v := range parse.strs {
-		divs += fmt.Sprintf(`<div class="%s"></div>`+"\n", v)
+		if v == `""` {
+			continue
+		}
+		divs += fmt.Sprintf(`<div class=%s></div>`+"\n", v)
 	}
 	return fmt.Sprintf(`<html>
     <body>
